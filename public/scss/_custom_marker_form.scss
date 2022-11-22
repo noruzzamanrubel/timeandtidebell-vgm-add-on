@@ -1,0 +1,45 @@
+.wpgmza_table {
+  display: none !important;
+}
+
+#ttb_marker_form_wrapper {
+  .ttb_marker_form {
+    .ttb_marker_form_field {
+      padding-bottom: 15px;
+
+      label {
+        display: block;
+        padding-bottom: 15px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+
+        &:focus {
+          outline: none;
+          border: none;
+        }
+      }
+
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: none;
+
+        &:focus {
+          outline: none;
+          border: none;
+        }
+      }
+
+      &#ttb_submit {
+        display: inline-block;
+        #ttb_marker_submit {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

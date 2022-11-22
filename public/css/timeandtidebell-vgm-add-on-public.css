@@ -1,0 +1,28 @@
+.wpgmza_table {
+  display: none !important; }
+
+#ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field {
+  padding-bottom: 15px; }
+  #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field label {
+    display: block;
+    padding-bottom: 15px; }
+  #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field input {
+    width: 100%;
+    padding: 10px;
+    border: none; }
+    #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field input:focus {
+      outline: none;
+      border: none; }
+  #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field textarea {
+    width: 100%;
+    padding: 10px;
+    border: none; }
+    #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field textarea:focus {
+      outline: none;
+      border: none; }
+  #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field#ttb_submit {
+    display: inline-block; }
+    #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field#ttb_submit #ttb_marker_submit {
+      cursor: pointer; }
+
+/*# sourceMappingURL=timeandtidebell-vgm-add-on-public.css.map */
