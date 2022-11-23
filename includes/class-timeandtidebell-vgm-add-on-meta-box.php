@@ -8,27 +8,27 @@ class timeandtidebell_Vgm_Add_On_Meta_Box {
     // Register Custom Post Type
     public function custom_product_designer_meta_box() {
 
-        if ( class_exists( 'CSF' ) ) {
+        // if ( class_exists( 'CSF' ) ) {
 
-            $prefix = 'timeandtidebell_vgm_add_on';
+        //     $prefix = 'timeandtidebell_vgm_add_on';
 
-            CSF::createMetabox( $prefix, array(
-                'title'     => esc_html__( 'Map Meta', 'oceanwp' ),
-                // 'post_type' => 'page',
-            ) );
+        //     CSF::createMetabox( $prefix, array(
+        //         'title'     => esc_html__( 'Map Meta', 'oceanwp' ),
+        //         // 'post_type' => 'page',
+        //     ) );
 
-            CSF::createSection( $prefix, array(
-                'fields' => array(
-                    array(
-                        'id'      => 'opt-text',
-                        'type'    => 'text',
-                        'title'   => 'Text',
-                        'default' => 'Hello world.'
-                      ),
-                ),
+        //     CSF::createSection( $prefix, array(
+        //         'fields' => array(
+        //             array(
+        //                 'id'      => 'opt-text',
+        //                 'type'    => 'text',
+        //                 'title'   => 'Text',
+        //                 'default' => 'Hello world.'
+        //               ),
+        //         ),
 
-            ) );
-        }
+        //     ) );
+        // }
 
     }
 

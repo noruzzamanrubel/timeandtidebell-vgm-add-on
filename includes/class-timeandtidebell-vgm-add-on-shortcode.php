@@ -6,7 +6,12 @@ class timeandtidebell_Vgm_Add_Shortcode {
         add_shortcode( 'add_marker_form', [$this, 'timeandtidebell_custom_marker_form'] );
     }
 
-    public function timeandtidebell_custom_marker_form(){
+    public function timeandtidebell_custom_marker_form($attr){
+
+        $attr = shortcode_atts( [
+            'id' => '',
+        ], $attr );
+
         static $i = 0;
         $i++;
         $id_prefix = 'ttb_vgm_form' . $i;

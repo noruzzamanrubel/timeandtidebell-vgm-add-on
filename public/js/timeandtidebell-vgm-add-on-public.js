@@ -39,6 +39,10 @@
       },
     });
 
+    var lat = $("#wpgmza_ugm_lat").val();
+    console.log(lat);
+
+
     $("#ttb_marker_form_wrapper form").on("submit", function (e) {
       e.preventDefault();
 
@@ -46,6 +50,8 @@
       var ttb_marker_address = $(this).find('input[name="ttb_marker_address"]').val();
       var ttb_marker_type = $(this).find(":selected").text();
       var ttb_marker_description = $(this).find('textarea[name="ttb_marker_description"]').val();
+
+      var mapid = $("#wpgmza_ugm_map_id").val();
 
       $.ajax({
         url: ttb_vgm_form.ajaxurl,
@@ -57,6 +63,7 @@
             ttb_marker_address: ttb_marker_address,
             ttb_marker_type: ttb_marker_type,
             ttb_marker_description: ttb_marker_description,
+            mapid: mapid,
           },
           nonce: ttb_vgm_form.nonce,
         },
@@ -72,3 +79,16 @@
     });
   });
 })(jQuery);
+
+
+//insert lat and lng into the form browser
+function displaylat_lon(lat, lon) {
+  document.getElementById("ttb_marker_address").value = lat + " , " + lon;
+}
+
+window.addEventListener("load", (event) => {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(function (position) {
+    displaylat_lon(position.coords.latitude, position.coords.longitude);
+  });
+});
