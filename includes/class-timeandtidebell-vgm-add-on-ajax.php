@@ -18,17 +18,17 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
         $ttb_marker_type   = isset( $data['ttb_marker_type'] ) ? sanitize_text_field( $data['ttb_marker_type'] ) : '';
         $ttb_marker_description   = isset( $data['ttb_marker_description'] ) ? sanitize_text_field( $data['ttb_marker_description'] ) : '';
 
-        // validate user input
-        // if ( empty( $ttb_marker_date ) || empty( $ttb_marker_address ) || empty( $ttb_marker_type ) || empty( $ttb_marker_description ) ) {
-        //     $this->errors['ttb_marker_address']   = __( 'Address is required', 'timeandtidebell-vgm-add-on' );
-        //     $this->errors['ttb_marker_date']   = __( 'Date is required', 'timeandtidebell-vgm-add-on' );
-        //     $this->errors['ttb_marker_type']   = __( 'Type required', 'timeandtidebell-vgm-add-on' );
-        //     $this->errors['ttb_marker_description'] = __( 'Description is required', 'timeandtidebell-vgm-add-on' );
-        // }
+        if ( empty( $ttb_marker_date ) || empty( $wpgmza_ugm_add_address ) || empty( $ttb_marker_type ) || empty( $ttb_marker_description ) ) {
+            $this->errors['wpgmza_ugm_add_address']   = __( 'Address is required', 'timeandtidebell-vgm-add-on' );
+            $this->errors['ttb_marker_date']   = __( 'Date is required', 'timeandtidebell-vgm-add-on' );
+            $this->errors['ttb_marker_type']   = __( 'Type required', 'timeandtidebell-vgm-add-on' );
+            $this->errors['ttb_marker_description'] = __( 'Description is required', 'timeandtidebell-vgm-add-on' );
+        }
 
-        // if ( ! empty( $this->errors ) ) {
-        //     wp_send_json_error( $this->errors );
-        // }
+        if ( ! empty( $this->errors ) ) {
+            wp_send_json_error( $this->errors );
+        }
+
 
         global $wpdb;
 
@@ -42,15 +42,43 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
                 'address'                         => $wpgmza_ugm_add_address,
                 'lat'                             => $wpgmza_lat_lng[0],
                 'lng'                             => $wpgmza_lat_lng[1],
-                // 'ttb_marker_date'             => $ttb_marker_date,
-                // 'ttb_marker_type'             => $ttb_marker_type,
-                'description'      => $ttb_marker_description,
+                'description'                     => $ttb_marker_description,
             ],
             [
                 '%d',
                 '%s',
                 '%s',
                 '%s',
+                '%s',
+            ]
+        );
+
+        // insert custom filed value
+        $marker_id = $wpdb->insert_id;
+        $wpdb->insert(
+            "{$wpdb->prefix}wpgmza_markers_has_custom_fields",
+            [
+                'object_id'                          => $marker_id,
+                'field_id'                          => 3,
+                'value'                             => $ttb_marker_date,
+            ],
+            [
+                '%d',
+                '%d',
+                '%s',
+            ]
+        );
+
+        $wpdb->insert(
+            "{$wpdb->prefix}wpgmza_markers_has_custom_fields",
+            [
+                'object_id'                          => $marker_id,
+                'field_id'                           => 4,
+                'value'                             => $ttb_marker_type,
+            ],
+            [
+                '%d',
+                '%d',
                 '%s',
             ]
         );

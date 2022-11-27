@@ -1,31 +1,40 @@
-.wpgmza_table {
-  .wpgmza-title {
-    display: none !important;
-  }
-  .wpgmza-description {
-    display: none !important;
-  }
-  #wpgmza_ugm_spm {
-    display: none !important;
-  }
-  #wpgmza_ugm_addmarker {
-    display: none;
-  }
-  tbody{
-    width: 100%;
-    tr {
-      &:nth-child(4){
-        display: none !important;
-        margin-bottom: 0 !important;
+body {
+  .wpgmaps_user_form {
+    table {
+      &.wpgmza_table{
+        tr {
+          display: none !important;
+        }
       }
-      &.wpgmza-address {
-        input {
+    }
+  }
+}
+
+body {
+  .wpgmaps_user_form {
+    table {
+      width: 100%;
+      &.wpgmza_table{
+        tbody{
           width: 100%;
-          padding: 10px;
-          border: none;
-          &:focus {
-            outline: none;
-            border: none;
+          tr {
+            &.wpgmza-address {
+              display: flex !important;
+              width: 100%;
+              td {
+                padding:0 !important;
+                input {
+                  width: 100%;
+                  padding: 10px;
+                  border: none;
+          
+                  &:focus {
+                    outline: none;
+                    border: none;
+                  }
+                }
+              }
+            }
           }
         }
       }
