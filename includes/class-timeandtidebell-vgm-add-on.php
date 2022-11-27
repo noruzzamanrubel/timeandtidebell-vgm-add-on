@@ -124,6 +124,8 @@ class Timeandtidebell_Vgm_Add_On {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-timeandtidebell-vgm-add-on-public.php';
 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'libs/codestar-framework/codestar-framework.php';
+		
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-timeandtidebell-vgm-add-on-meta-box.php';
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-timeandtidebell-vgm-add-on-shortcode.php';

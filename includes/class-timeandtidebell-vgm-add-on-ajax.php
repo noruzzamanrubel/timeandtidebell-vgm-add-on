@@ -86,7 +86,7 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
         //success message
         if ( $inserted ) {
             wp_send_json_success( [
-                'message' => __( 'Your message has been sent successfully.', 'timeandtidebell-vgm-add-on' ),
+                'message' => __( 'Your marker has been add successfully.', 'timeandtidebell-vgm-add-on' ),
             ], 200 );
         }
 
