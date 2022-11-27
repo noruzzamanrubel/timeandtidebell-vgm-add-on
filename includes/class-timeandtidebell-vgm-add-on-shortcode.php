@@ -6,12 +6,7 @@ class timeandtidebell_Vgm_Add_Shortcode {
         add_shortcode( 'add_marker_form', [$this, 'timeandtidebell_custom_marker_form'] );
     }
 
-    public function timeandtidebell_custom_marker_form($attr){
-
-        $attr = shortcode_atts( [
-            'id' => '',
-        ], $attr );
-
+    public function timeandtidebell_custom_marker_form(){
         static $i = 0;
         $i++;
         $id_prefix = 'ttb_vgm_form' . $i;
@@ -22,10 +17,6 @@ class timeandtidebell_Vgm_Add_Shortcode {
                 <div class="ttb_marker_form_field">
                     <label for="ttb_marker_date">Marker Date</label>
                     <input type="text" name="ttb_marker_date" id="ttb_marker_date" placeholder="Enter Date" value="" readonly="readonly">
-                </div>
-                <div class="ttb_marker_form_field">
-                    <label for="ttb_marker_address">Marker Address or GPS Location</label>
-                    <input type="text" name="ttb_marker_address" id="ttb_marker_address" placeholder="Enter Address or GPS Location" value="">
                 </div>
                 <div class="ttb_marker_form_field">
                     <label for="ttb_marker_type">Types of entry</label>

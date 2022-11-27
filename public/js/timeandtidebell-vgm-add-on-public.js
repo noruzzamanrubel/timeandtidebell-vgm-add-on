@@ -39,19 +39,27 @@
       },
     });
 
-    var lat = $("#wpgmza_ugm_lat").val();
-    console.log(lat);
+    var map_id = $("#wpgmza_ugm_map_id").val();
+
+  //insert lat and lng into the form browser
+    function displaylat_lon(lat, lon) {
+      document.getElementById(`wpgmza_ugm_add_address_${map_id}`).value = lat + ", " + lon;
+    }
+    
+    window.addEventListener("load", (event) => {
+      event.preventDefault();
+      navigator.geolocation.getCurrentPosition(function (position) {
+        displaylat_lon(position.coords.latitude, position.coords.longitude);
+      });
+    });    
 
 
     $("#ttb_marker_form_wrapper form").on("submit", function (e) {
       e.preventDefault();
-
+      var wpgmza_ugm_add_address = $('.wpgmaps_user_form table').find('input[name="wpgmza_ugm_add_address"]').val();
       var ttb_marker_date = $(this).find('input[name="ttb_marker_date"]').val();
-      var ttb_marker_address = $(this).find('input[name="ttb_marker_address"]').val();
       var ttb_marker_type = $(this).find(":selected").text();
       var ttb_marker_description = $(this).find('textarea[name="ttb_marker_description"]').val();
-
-      var mapid = $("#wpgmza_ugm_map_id").val();
 
       $.ajax({
         url: ttb_vgm_form.ajaxurl,
@@ -60,10 +68,10 @@
           action: ttb_vgm_form.action,
           data: {
             ttb_marker_date: ttb_marker_date,
-            ttb_marker_address: ttb_marker_address,
+            wpgmza_ugm_add_address: wpgmza_ugm_add_address,
             ttb_marker_type: ttb_marker_type,
             ttb_marker_description: ttb_marker_description,
-            mapid: mapid,
+            map_id: map_id,
           },
           nonce: ttb_vgm_form.nonce,
         },
@@ -79,16 +87,3 @@
     });
   });
 })(jQuery);
-
-
-//insert lat and lng into the form browser
-function displaylat_lon(lat, lon) {
-  document.getElementById("ttb_marker_address").value = lat + " , " + lon;
-}
-
-window.addEventListener("load", (event) => {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(function (position) {
-    displaylat_lon(position.coords.latitude, position.coords.longitude);
-  });
-});
