@@ -13,9 +13,6 @@
         ttb_marker_date: {
           required: true,
         },
-        ttb_marker_address: {
-          required: true,
-        },
         ttb_marker_type: {
           required: true,
         },
@@ -26,9 +23,6 @@
       messages: {
         ttb_marker_date: {
           required: ttb_vgm_form.ttb_marker_date,
-        },
-        ttb_marker_address: {
-          required: ttb_vgm_form.ttb_marker_address,
         },
         ttb_marker_type: {
           required: ttb_vgm_form.ttb_marker_type,

@@ -100,13 +100,12 @@ class Timeandtidebell_Vgm_Add_On_Public {
 		wp_enqueue_script( 'jquery-validation', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js' );
 
 		wp_localize_script( $this->plugin_name, 'ttb_vgm_form', [
-            'ajaxurl'     => admin_url( 'admin-ajax.php' ),
-            'action'      => 'ttb_vgm_form_submit',
-            'nonce'       => wp_create_nonce( 'ttb_vgm_form_nonce' ),
-			'ttb_marker_date'       => __( 'Please enter date', 'timeandtidebell-vgm-add-on' ),
-            'ttb_marker_address'   => __( 'Please enter lat and long', 'timeandtidebell-vgm-add-on' ),
-            'ttb_marker_type'       => __( 'Please select type', 'timeandtidebell-vgm-add-on' ),
-            'ttb_marker_description'   => __( 'Please enter description. Max character 100 ', 'timeandtidebell-vgm-add-on' ),
+            'ajaxurl'     				=> admin_url( 'admin-ajax.php' ),
+            'action'      				=> 'ttb_vgm_form_submit',
+            'nonce'       				=> wp_create_nonce( 'ttb_vgm_form_nonce' ),
+			'ttb_marker_date'       	=> __( 'Please enter date', 'timeandtidebell-vgm-add-on' ),
+            'ttb_marker_type'       	=> __( 'Please select type', 'timeandtidebell-vgm-add-on' ),
+            'ttb_marker_description'    => __( 'Please enter description. Max character 100 ', 'timeandtidebell-vgm-add-on' ),
         ] );
 
 	}
