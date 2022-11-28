@@ -47,6 +47,7 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
                 'lat'         => $wpgmza_lat_lng[0],
                 'lng'         => $wpgmza_lat_lng[1],
                 'description' => $ttb_marker_description,
+                'approved'    => 0,
             ],
             [
                 '%d',
