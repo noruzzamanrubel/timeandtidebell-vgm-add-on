@@ -35,6 +35,8 @@
 
     var map_id = $("#wpgmza_ugm_map_id").val();
 
+    $("#ttb_marker_form_date_field").insertBefore(".wpgmza-address");
+
   //insert lat and lng into the form browser
     function displaylat_lon(lat, lon) {
       document.getElementById(`wpgmza_ugm_add_address_${map_id}`).value = lat + ", " + lon;

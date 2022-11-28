@@ -14,7 +14,7 @@ class timeandtidebell_Vgm_Add_Shortcode {
         ?>
         <div id="ttb_marker_form_wrapper">
             <form action="#" method="post" id="ttb_marker_form<?php echo($id_prefix); ?>" class="ttb_marker_form">
-                <div class="ttb_marker_form_field">
+                <div class="ttb_marker_form_field" id="ttb_marker_form_date_field">
                     <label for="ttb_marker_date">Marker Date</label>
                     <input type="text" name="ttb_marker_date" id="ttb_marker_date" placeholder="Enter Date" value="" readonly="readonly">
                 </div>

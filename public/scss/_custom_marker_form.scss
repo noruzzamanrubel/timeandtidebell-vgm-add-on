@@ -17,21 +17,56 @@ body {
       &.wpgmza_table{
         tbody{
           width: 100%;
+          .ttb_marker_form_field {
+            padding-bottom: 15px;
+            width: 100%;
+            label {
+              display: block;
+              padding-bottom: 5px;
+              font-size: 16px;
+              line-height: normal;
+            }
+      
+            input {
+              width: 100%;
+              padding: 10px;
+              border: none;
+              font-size: 14px;
+              line-height: normal;
+      
+              &:focus {
+                outline: none;
+                border: none;
+              }
+            }
+          }
           tr {
             &.wpgmza-address {
               display: flex !important;
               width: 100%;
+              margin: 0;
+              padding-bottom: 10px;
               td {
-                padding:0 !important;
+                font-size: 16px;
+                line-height: normal;
+                padding-bottom: 5px !important;
+                padding-right: 0 !important;
                 input {
                   width: 100%;
                   padding: 10px;
                   border: none;
+                  font-size: 14px;
+                  line-height: normal;
           
                   &:focus {
                     outline: none;
                     border: none;
                   }
+                }
+                p {
+                  font-size: 12px;
+                  line-height: normal;
+                  margin: 5px 0 0;
                 }
               }
             }
@@ -49,17 +84,35 @@ body {
 
       label {
         display: block;
-        padding-bottom: 15px;
+        padding-bottom: 5px;
+        font-size: 16px;
+        line-height: normal;
       }
 
       input {
         width: 100%;
         padding: 10px;
         border: none;
+        font-size: 14px;
+        line-height: normal;
 
         &:focus {
           outline: none;
           border: none;
+        }
+      }
+      select {
+        width: 25%;
+        padding: 10px;
+        border: none;
+        font-size: 14px;
+        line-height: normal;
+        &:focus {
+          border: none;
+          outline: none;
+        }
+        @media only screen and (max-width: 767px) { 
+          width: 50%;
         }
       }
 
@@ -67,6 +120,8 @@ body {
         width: 100%;
         padding: 10px;
         border: none;
+        font-size: 14px;
+        line-height: normal;
 
         &:focus {
           outline: none;
@@ -83,3 +138,8 @@ body {
     }
   }
 }
+
+input::-webkit-input-placeholder {
+  font-size: 14px !important;
+  line-height: normal;
+ }
