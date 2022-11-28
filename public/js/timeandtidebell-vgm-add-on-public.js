@@ -37,6 +37,13 @@
 
     $("#ttb_marker_form_date_field").insertBefore(".wpgmza-address");
 
+    //insert custom field id
+    $('[data-custom-field-name="Date"]').parent().parent().attr( 'id', 'data_custom_field_date' );
+    $('[data-custom-field-name="Types of entry"]').parent().parent().attr( 'id', 'data_custom_field_type' );
+
+    var date_id = $('#data_custom_field_date').attr("data-custom-field-id");
+    var type_id = $('#data_custom_field_type').attr("data-custom-field-id");
+
   //insert lat and lng into the form browser
     function displaylat_lon(lat, lon) {
       document.getElementById(`wpgmza_ugm_add_address_${map_id}`).value = lat + ", " + lon;
@@ -47,13 +54,13 @@
       navigator.geolocation.getCurrentPosition(function (position) {
         displaylat_lon(position.coords.latitude, position.coords.longitude);
       });
-    });    
+    });  
 
 
     $("#ttb_marker_form_wrapper form").on("submit", function (e) {
       e.preventDefault();
       var wpgmza_ugm_add_address = $('.wpgmaps_user_form table').find('input[name="wpgmza_ugm_add_address"]').val();
-      var ttb_marker_date = $(this).find('input[name="ttb_marker_date"]').val();
+      var ttb_marker_date = $('.wpgmaps_user_form table').find('input[name="ttb_marker_date"]').val();
       var ttb_marker_type = $(this).find(":selected").text();
       var ttb_marker_description = $(this).find('textarea[name="ttb_marker_description"]').val();
 
@@ -68,6 +75,8 @@
             ttb_marker_type: ttb_marker_type,
             ttb_marker_description: ttb_marker_description,
             map_id: map_id,
+            date_id: date_id,
+            type_id: type_id,
           },
           nonce: ttb_vgm_form.nonce,
         },

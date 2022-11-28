@@ -13,6 +13,8 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
         // sanitize user input
         $data    = $_POST['data'];
         $map_id     = isset( $data['map_id'] ) ? intval( $data['map_id'] ) : 0;
+        $date_id     = isset( $data['date_id'] ) ? intval( $data['date_id'] ) : 0;
+        $type_id     = isset( $data['type_id'] ) ? intval( $data['type_id'] ) : 0;
         $wpgmza_ugm_add_address   = isset( $data['wpgmza_ugm_add_address'] ) ? sanitize_text_field( $data['wpgmza_ugm_add_address'] ) : '';
         $ttb_marker_date          = isset( $data['ttb_marker_date'] ) ? sanitize_text_field( $data['ttb_marker_date'] ) : '';
         $ttb_marker_type          = isset( $data['ttb_marker_type'] ) ? sanitize_text_field( $data['ttb_marker_type'] ) : '';
@@ -59,7 +61,7 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
             "{$wpdb->prefix}wpgmza_markers_has_custom_fields",
             [
                 'object_id' => $marker_id,
-                'field_id'  => 3,
+                'field_id'  => $date_id,
                 'value'     => $ttb_marker_date,
             ],
             [
@@ -73,7 +75,7 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
             "{$wpdb->prefix}wpgmza_markers_has_custom_fields",
             [
                 'object_id' => $marker_id,
-                'field_id'  => 4,
+                'field_id'  => $type_id,
                 'value'     => $ttb_marker_type,
             ],
             [
