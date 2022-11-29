@@ -38,6 +38,29 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
 
         $wpgmza_lat_lng = explode(", ", $wpgmza_ugm_add_address);
 
+        //Custom Marker icon Url
+        $custom_icon_url        = "";
+        $flora_icon_url         = get_site_url().'/wp-content/uploads/wp-google-maps/icons/633ead38835c84.13417171.png';
+        $invertebrates_icon_url = get_site_url().'/wp-content/uploads/wp-google-maps/icons/6385973308f0e8.93376644.png';
+        $crustaceans_icon_url   = get_site_url().'/wp-content/uploads/wp-google-maps/icons/63858c66658a58.29244871.png';
+        $fish_icon_url          = get_site_url().'/wp-content/uploads/wp-google-maps/icons/633eadb182d8a0.04915283.png';
+        $mammals_icon_url       = get_site_url().'/wp-content/uploads/wp-google-maps/icons/633ead57cf8296.38666914.png';
+        $seashells_icon_url     = get_site_url().'/wp-content/uploads/wp-google-maps/icons/633ead292ba933.27932952.png';
+
+        if($ttb_marker_type == "Flora"){
+            $custom_icon_url = $flora_icon_url;
+        }elseif($ttb_marker_type == "Invertebrates"){
+            $custom_icon_url = $invertebrates_icon_url;
+        }elseif($ttb_marker_type == "Crustaceans"){
+            $custom_icon_url = $crustaceans_icon_url;
+        }elseif($ttb_marker_type == "Fish"){
+            $custom_icon_url = $fish_icon_url;
+        }elseif($ttb_marker_type == "Mammals"){
+            $custom_icon_url = $mammals_icon_url;
+        }elseif($ttb_marker_type == "Seashells"){
+            $custom_icon_url = $seashells_icon_url;
+        }
+
         //insert data
         $inserted = $wpdb->insert(
             "{$wpdb->prefix}wpgmza",
@@ -48,12 +71,15 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
                 'lng'         => $wpgmza_lat_lng[1],
                 'description' => $ttb_marker_description,
                 'approved'    => 0,
+                'icon'        => $custom_icon_url,
             ],
             [
                 '%d',
                 '%s',
                 '%s',
                 '%s',
+                '%s',
+                '%d',
                 '%s',
             ]
         );
