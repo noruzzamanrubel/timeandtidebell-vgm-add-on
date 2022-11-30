@@ -6,7 +6,13 @@ class timeandtidebell_Vgm_Add_Shortcode {
         add_shortcode( 'add_marker_form', [$this, 'timeandtidebell_custom_marker_form'] );
     }
 
-    public function timeandtidebell_custom_marker_form(){
+    public function timeandtidebell_custom_marker_form($atts){
+        $atts = shortcode_atts(array(
+            "type" => "Flora, Invertebrates, Crustaceans, Fish, Mammals, Seashells"
+        ), $atts);
+
+        $attr_type = explode(",", $atts['type']);
+
         static $i = 0;
         $i++;
         $id_prefix = 'ttb_vgm_form' . $i;
@@ -21,12 +27,11 @@ class timeandtidebell_Vgm_Add_Shortcode {
                 <div class="ttb_marker_form_field">
                     <label for="ttb_marker_type">Types of entry</label>
                     <select name="ttb_marker_type" id="ttb_marker_type">
-                        <option value="Flora">Flora</option>
-                        <option value="Invertebrates">Invertebrates</option>
-                        <option value="Crustaceans">Crustaceans</option>
-                        <option value="Fish">Fish</option>
-                        <option value="Mammals">Mammals</option>
-                        <option value="Seashells">Seashells</option>
+                        <?php
+                            foreach($attr_type as $key => $option) {?>
+                                <option value="<?php echo strtolower($option); ?>"><?php echo $option; ?></option>
+                            <?php }
+                        ?>
                     </select>
                 </div>
                 <div class="ttb_marker_form_field">
