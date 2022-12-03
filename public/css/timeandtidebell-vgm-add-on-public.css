@@ -88,6 +88,9 @@ body .wpgmaps_user_form table {
     #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field#ttb_submit #ttb_marker_submit {
       cursor: pointer; }
 
+#ttb_marker_date {
+  background-color: #e5e5e5 !important; }
+
 input::-webkit-input-placeholder {
   font-size: 14px !important;
   line-height: normal; }

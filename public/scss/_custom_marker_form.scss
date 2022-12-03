@@ -95,7 +95,6 @@ body {
         border: none;
         font-size: 14px;
         line-height: normal;
-
         &:focus {
           outline: none;
           border: none;
@@ -139,6 +138,9 @@ body {
   }
 }
 
+#ttb_marker_date{
+  background-color: #e5e5e5 !important;
+}
 input::-webkit-input-placeholder {
   font-size: 14px !important;
   line-height: normal;
