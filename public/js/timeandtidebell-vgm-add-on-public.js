@@ -55,14 +55,23 @@
       document.getElementById(`wpgmza_ugm_add_address_${map_id}`).value = lat + ", " + lon;
     }
 
+    $(".wpgmza-address").prepend('<span class="ttb-required-label"> *</span>');
     $(".wpgmza-address").append('<div id="ttb_map_icon"><img src="'+ttb_vgm_form.icon+'"></div>');
 
-    $('body').on('click', '#ttb_map_icon', function() {
+    //set lat lon from browser
+    window.addEventListener("load", (event) => {
+      event.preventDefault();
       navigator.geolocation.getCurrentPosition(function (position) {
         displaylat_lon(position.coords.latitude, position.coords.longitude);
       });
     });
 
+    //add lat lon from browser
+    $('body').on('click', '#ttb_map_icon', function() {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        displaylat_lon(position.coords.latitude, position.coords.longitude);
+      });
+    });
 
     // Submit date by ajax
     $("#ttb_marker_form_wrapper form").on("submit", function (e) {

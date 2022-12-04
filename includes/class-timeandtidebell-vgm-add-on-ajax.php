@@ -15,28 +15,45 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
             $_FILES[ 'file' ],
             array( 'test_form' => false )
         );
-    
-        $attachment_id = wp_insert_attachment(
-            array(
-                'guid'           => $upload[ 'url' ],
-                'post_mime_type' => $upload[ 'type' ],
-                'post_title'     => basename( $upload[ 'file' ] ),
-                'post_content'   => '',
-                'post_status'    => 'inherit',
-            ),
-            $upload[ 'file' ]
+
+        $post_id = $_POST['map_id'];
+
+        $attachment = array(
+            'guid'           => $upload[ 'url' ],
+            'post_mime_type' => $upload[ 'type' ],
+            'post_title'     => basename( $upload[ 'file' ] ),
+            'post_content'   => '',
+            'post_status'    => 'inherit',
         );
 
-        $store_img_url = wp_get_attachment_image_url($attachment_id, 'marker-icon');
-        
+        add_image_size( 'custom-size', 300, 300, true );
 
-        // $store_img_file_url = aq_resize($store_img_url, '300', null, null, true, true);
+        $filename = $upload[ 'file' ];
 
-        // $attach_data = wp_generate_attachment_metadata( $attachment_id, $store_img_url );
-        // $attachment_metadata = wp_get_attachment_metadata( $store_img_url ['sizes']['medium_large']['file']);
+        $attach_id = wp_insert_attachment( $attachment, $filename, $post_id );
 
-        // var_dump($attachment_metadata);
-        // die();
+        require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+        // Generate the metadata for the attachment, and update the database record.
+        $attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+        wp_update_attachment_metadata( $attach_id, $attach_data["sizes"]["custom-size"]);
+        set_post_thumbnail( $post_id, $attach_id );
+
+    
+        // $attachment_id = wp_insert_attachment(
+        //     array(
+        //         'guid'           => $upload[ 'url' ],
+        //         'post_mime_type' => $upload[ 'type' ],
+        //         'post_title'     => basename( $upload[ 'file' ] ),
+        //         'post_content'   => '',
+        //         'post_status'    => 'inherit',
+        //     ),
+        //     $upload[ 'file' ]
+        // );
+
+
+        $store_img_url = wp_get_attachment_image_url($attach_id, 'custom-size');
+    
 
         // sanitize user input
         $map_id     = isset( $_POST['map_id'] ) ? intval( $_POST['map_id'] ) : 0;

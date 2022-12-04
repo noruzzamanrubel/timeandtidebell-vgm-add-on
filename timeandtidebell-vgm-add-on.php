@@ -46,8 +46,6 @@ function activate_timeandtidebell_vgm_add_on() {
 	Timeandtidebell_Vgm_Add_On_Activator::activate();
 }
 
-add_image_size( 'marker-icon', 320, 320 );
-
 
 /**
  * The code that runs during plugin deactivation.

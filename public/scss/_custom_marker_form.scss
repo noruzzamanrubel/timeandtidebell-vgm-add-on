@@ -12,6 +12,11 @@ body {
 
 body {
   .wpgmaps_user_form {
+    background-color: rgba(96,110,121,0.4);
+    padding: 20px 20px 0px 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-top: 20px;
     table {
       width: 100%;
       &.wpgmza_table{
@@ -22,9 +27,16 @@ body {
             width: 100%;
             label {
               display: block;
-              padding-bottom: 5px;
+              padding: 0;
+              margin-bottom: 4px;
               font-size: 16px;
-              line-height: normal;
+              line-height: 1.3;
+              color: #fff;
+              font-weight: 700;
+              .ttb-required-label {
+                color: #ff0000;
+                font-weight: 400;
+              }
             }
       
             input {
@@ -49,9 +61,12 @@ body {
               position: relative;
               td {
                 font-size: 16px;
-                line-height: normal;
-                padding-bottom: 5px !important;
+                padding: 0 !important;
+                margin-bottom: 4px !important;
                 padding-right: 0 !important;
+                line-height: 1.3;
+                color: #fff;
+                font-weight: 700;
                 input {
                   width: 100%;
                   padding: 10px 10px 10px 30px;
@@ -68,6 +83,7 @@ body {
                   font-size: 12px;
                   line-height: normal;
                   margin: 5px 0 0;
+                  font-weight: 400;
                 }
               }
               #ttb_map_icon {
@@ -83,6 +99,14 @@ body {
                   height: auto;
                 }
               }
+              .ttb-required-label {
+                position: absolute;
+                top: -3px;
+                left: calc(20% + 30px);
+                display: block;
+                color: #ff0000;
+                font-weight: 400;
+              }
             }
           }
         }
@@ -92,15 +116,29 @@ body {
 }
 
 #ttb_marker_form_wrapper {
+  background-color: rgba(96,110,121,0.4);
+  padding: 0px 20px 20px 20px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
   .ttb_marker_form {
     .ttb_marker_form_field {
       padding-bottom: 15px;
+      &:nth-child(2){
+        padding-bottom: 5px;
+      }
 
       label {
         display: block;
-        padding-bottom: 5px;
         font-size: 16px;
-        line-height: normal;
+        line-height: 1.3;
+        color: #fff;
+        font-weight: 700;
+        padding: 0;
+        margin-bottom: 4px;
+        .ttb-required-label {
+          color: #ff0000;
+          font-weight: 400;
+        }
       }
 
       input {
@@ -146,6 +184,15 @@ body {
         display: inline-block;
         #ttb_marker_submit {
           cursor: pointer;
+          background-color: #eee;
+          border: 1px solid #ddd;
+          color: #333;
+          font-size: 1em;
+          padding: 10px 15px;
+          &:hover {
+            background-color: #ddd;
+            border: 1px solid #ccc;
+          }
         }
       }
       &#ttb_upload_image {
@@ -155,6 +202,7 @@ body {
         }
         input {
           padding-left: 0 !important;
+          padding-top: 4px !important;
         }
       }
     }
@@ -169,4 +217,3 @@ input::-webkit-input-placeholder {
   line-height: normal;
  }
 
- 
