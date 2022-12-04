@@ -54,13 +54,15 @@
     function displaylat_lon(lat, lon) {
       document.getElementById(`wpgmza_ugm_add_address_${map_id}`).value = lat + ", " + lon;
     }
-    
-    window.addEventListener("load", (event) => {
-      event.preventDefault();
+
+    $(".wpgmza-address").append('<div id="ttb_map_icon"><img src="'+ttb_vgm_form.icon+'"></div>');
+
+    $('body').on('click', '#ttb_map_icon', function() {
       navigator.geolocation.getCurrentPosition(function (position) {
         displaylat_lon(position.coords.latitude, position.coords.longitude);
       });
-    });  
+    });
+
 
     // Submit date by ajax
     $("#ttb_marker_form_wrapper form").on("submit", function (e) {
@@ -70,23 +72,32 @@
       var ttb_marker_type = $('#ttb_marker_type').find(":selected").text();
       var ttb_marker_description = $(this).find('textarea[name="ttb_marker_description"]').val();
 
+
+      var fd = new FormData();
+      var file = jQuery(document).find('#ttb_file');
+      var individual_file = file[0].files[0];
+
+      fd.append("file", individual_file);
+      fd.append('action', 'ttb_vgm_form_submit');
+      fd.append('nonce', ttb_vgm_form.nonce);
+
+      fd.append('wpgmza_ugm_add_address', wpgmza_ugm_add_address);
+      fd.append('ttb_marker_date', ttb_marker_date);
+      fd.append('ttb_marker_type', ttb_marker_type);
+      fd.append('ttb_marker_description', ttb_marker_description);
+      fd.append('map_id', map_id);
+      fd.append('date_id', date_id);
+      fd.append('type_id', type_id);
+      fd.append('season_id', season_id);
+
+
       $.ajax({
+        type: 'POST',
         url: ttb_vgm_form.ajaxurl,
-        type: "POST",
-        data: {
-          action: ttb_vgm_form.action,
-          data: {
-            ttb_marker_date: ttb_marker_date,
-            wpgmza_ugm_add_address: wpgmza_ugm_add_address,
-            ttb_marker_type: ttb_marker_type,
-            ttb_marker_description: ttb_marker_description,
-            map_id: map_id,
-            date_id: date_id,
-            type_id: type_id,
-            season_id: season_id,
-          },
-          nonce: ttb_vgm_form.nonce,
-        },
+        data: fd,
+        contentType: false,
+        processData: false,
+
         success: function (data) {
           if (data.success === true) {
             $("#result_message").html("<div>" + data.data.message + "</div>");

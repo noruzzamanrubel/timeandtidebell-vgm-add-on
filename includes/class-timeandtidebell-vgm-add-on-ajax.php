@@ -1,5 +1,5 @@
 <?php
-
+require_once plugin_dir_path( __FILE__ ) . '../libs/function.php';
 class Timeandtidebell_Vgm_Add_On_Ajax {
 
     public $errors = [];
@@ -8,19 +8,45 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
         $nonce = $_POST['nonce'];
 
         if ( ! wp_verify_nonce( $nonce, 'ttb_vgm_form_nonce' ) ) {
-            die( 'Busted!' );
+            die( 'nonce not varify!' );
         }
 
+        $upload = wp_handle_upload(
+            $_FILES[ 'file' ],
+            array( 'test_form' => false )
+        );
+    
+        $attachment_id = wp_insert_attachment(
+            array(
+                'guid'           => $upload[ 'url' ],
+                'post_mime_type' => $upload[ 'type' ],
+                'post_title'     => basename( $upload[ 'file' ] ),
+                'post_content'   => '',
+                'post_status'    => 'inherit',
+            ),
+            $upload[ 'file' ]
+        );
+
+        $store_img_url = wp_get_attachment_image_url($attachment_id, 'marker-icon');
+        
+
+        // $store_img_file_url = aq_resize($store_img_url, '300', null, null, true, true);
+
+        // $attach_data = wp_generate_attachment_metadata( $attachment_id, $store_img_url );
+        // $attachment_metadata = wp_get_attachment_metadata( $store_img_url ['sizes']['medium_large']['file']);
+
+        // var_dump($attachment_metadata);
+        // die();
+
         // sanitize user input
-        $data    = $_POST['data'];
-        $map_id     = isset( $data['map_id'] ) ? intval( $data['map_id'] ) : 0;
-        $date_id     = isset( $data['date_id'] ) ? intval( $data['date_id'] ) : 0;
-        $type_id     = isset( $data['type_id'] ) ? intval( $data['type_id'] ) : 0;
-        $season_id     = isset( $data['season_id'] ) ? intval( $data['season_id'] ) : 0;
-        $wpgmza_ugm_add_address   = isset( $data['wpgmza_ugm_add_address'] ) ? sanitize_text_field( $data['wpgmza_ugm_add_address'] ) : '';
-        $ttb_marker_date          = isset( $data['ttb_marker_date'] ) ? sanitize_text_field( $data['ttb_marker_date'] ) : '';
-        $ttb_marker_type          = isset( $data['ttb_marker_type'] ) ? sanitize_text_field( $data['ttb_marker_type'] ) : '';
-        $ttb_marker_description   = isset( $data['ttb_marker_description'] ) ? sanitize_text_field( $data['ttb_marker_description'] ) : '';
+        $map_id     = isset( $_POST['map_id'] ) ? intval( $_POST['map_id'] ) : 0;
+        $date_id     = isset( $_POST['date_id'] ) ? intval( $_POST['date_id'] ) : 0;
+        $type_id     = isset( $_POST['type_id'] ) ? intval( $_POST['type_id'] ) : 0;
+        $season_id     = isset( $_POST['season_id'] ) ? intval( $_POST['season_id'] ) : 0;
+        $wpgmza_ugm_add_address   = isset( $_POST['wpgmza_ugm_add_address'] ) ? sanitize_text_field( $_POST['wpgmza_ugm_add_address'] ) : '';
+        $ttb_marker_date          = isset( $_POST['ttb_marker_date'] ) ? sanitize_text_field( $_POST['ttb_marker_date'] ) : '';
+        $ttb_marker_type          = isset( $_POST['ttb_marker_type'] ) ? sanitize_text_field( $_POST['ttb_marker_type'] ) : '';
+        $ttb_marker_description   = isset( $_POST['ttb_marker_description'] ) ? sanitize_text_field( $_POST['ttb_marker_description'] ) : '';
 
         if ( empty( $ttb_marker_date ) || empty( $wpgmza_ugm_add_address ) || empty( $ttb_marker_type ) || empty( $ttb_marker_description ) ) {
             $this->errors['wpgmza_ugm_add_address']   = __( 'Address is required', 'timeandtidebell-vgm-add-on' );
@@ -72,6 +98,7 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
                 'description' => $ttb_marker_description,
                 'approved'    => 0,
                 'icon'        => $custom_icon_url,
+                'pic'        => $store_img_url,
             ],
             [
                 '%d',
@@ -80,6 +107,7 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
                 '%s',
                 '%s',
                 '%d',
+                '%s',
                 '%s',
             ]
         );
@@ -138,6 +166,10 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
             wp_send_json_success( [
                 'message' => __( 'Thank you, your submission is received and will be added to the map once approved by an admin.', 'timeandtidebell-vgm-add-on' ),
             ], 200 );
+        }else{
+            wp_send_json_success( [
+                'message' => __( 'your submission did not received. Please fillup all field and resubmit again.', 'timeandtidebell-vgm-add-on' ),
+            ], 200 ); 
         }
 
         return $wpdb->insert_id;

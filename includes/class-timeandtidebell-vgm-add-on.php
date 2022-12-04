@@ -122,11 +122,16 @@ class Timeandtidebell_Vgm_Add_On {
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'libs/codestar-framework/codestar-framework.php';
+		
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'libs/function.php';
+
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-timeandtidebell-vgm-add-on-public.php';
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-timeandtidebell-vgm-add-on-shortcode.php';
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-timeandtidebell-vgm-add-on-ajax.php';
+		// require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-timeandtidebell-vgm-add-on-metabox.php';
 
 		$this->loader = new Timeandtidebell_Vgm_Add_On_Loader();
 
