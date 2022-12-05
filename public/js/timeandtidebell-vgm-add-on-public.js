@@ -76,6 +76,8 @@
     // Submit date by ajax
     $("#ttb_marker_form_wrapper form").on("submit", function (e) {
       e.preventDefault();
+
+      $('.ttb_marker_form').append('<div class="ttb_loader"><span class="loader"></span></div>');
       
       var wpgmza_ugm_add_address = $('.wpgmaps_user_form table').find('input[name="wpgmza_ugm_add_address"]').val();
       var ttb_marker_date = $('.wpgmaps_user_form table').find('input[name="ttb_marker_date"]').val();
@@ -111,8 +113,10 @@
           if (data.success === true) {
             $("#result_message").html("<div>" + data.data.message + "</div>");
             $("#ttb_marker_form_wrapper form").trigger("reset");
+            $('.ttb_loader').remove();
           } else if (data.success === false) {
             $("#result_message").html("<div>" + data.data.message + "</div>");
+            $('.ttb_loader').remove();
           }
         },
       });
