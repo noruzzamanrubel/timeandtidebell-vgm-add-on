@@ -76,11 +76,11 @@
     // Submit date by ajax
     $("#ttb_marker_form_wrapper form").on("submit", function (e) {
       e.preventDefault();
+      
       var wpgmza_ugm_add_address = $('.wpgmaps_user_form table').find('input[name="wpgmza_ugm_add_address"]').val();
       var ttb_marker_date = $('.wpgmaps_user_form table').find('input[name="ttb_marker_date"]').val();
       var ttb_marker_type = $('#ttb_marker_type').find(":selected").text();
       var ttb_marker_description = $(this).find('textarea[name="ttb_marker_description"]').val();
-
 
       var fd = new FormData();
       var file = jQuery(document).find('#ttb_file');

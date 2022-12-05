@@ -81,3 +81,9 @@ function run_timeandtidebell_vgm_add_on() {
 
 }
 run_timeandtidebell_vgm_add_on();
+
+function ttb_wp_ajax_approve_marker(){
+	var_dump("hello");
+	die();
+}
+add_action( 'wp_ajax_approve_marker', 'ttb_wp_ajax_approve_marker', 9999);

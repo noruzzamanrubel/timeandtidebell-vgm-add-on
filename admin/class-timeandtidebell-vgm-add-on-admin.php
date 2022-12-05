@@ -98,6 +98,11 @@ class Timeandtidebell_Vgm_Add_On_Admin {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/timeandtidebell-vgm-add-on-admin.js', array( 'jquery' ), $this->version, false );
 
+		
+		wp_localize_script( $this->plugin_name, 'approve', [
+            'ajaxurl'    => admin_url( 'admin-ajax.php' ),
+        ] );
+	
 	}
 
 }

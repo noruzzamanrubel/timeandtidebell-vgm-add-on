@@ -246,6 +246,10 @@ class Timeandtidebell_Vgm_Add_On {
         $plugin_ajax = new Timeandtidebell_Vgm_Add_On_Ajax();
         $this->loader->add_action( 'wp_ajax_ttb_vgm_form_submit', $plugin_ajax, 'ttb_vgm_form_submit' );
         $this->loader->add_action( 'wp_ajax_nopriv_ttb_vgm_form_submit', $plugin_ajax, 'ttb_vgm_form_submit' );
+
+		$this->loader->add_action( 'wp_ajax_ttb_vgb_insert_pic', $plugin_ajax, 'ttb_vgb_insert_pic' );
+        $this->loader->add_action( 'wp_ajax_nopriv_ttb_vgb_insert_pic', $plugin_ajax, 'ttb_vgb_insert_pic' );
+
     }
 
 }

@@ -1,47 +1,27 @@
 (function( $ ) {
 	'use strict';
 
-	/**
-	 * All of the code for your admin-facing JavaScript source
-	 * should reside in this file.
-	 *
-	 * Note: It has been assumed you will write jQuery code here, so the
-	 * $ function reference has been prepared for usage within the scope
-	 * of this function.
-	 *
-	 * This enables you to define handlers, for when the DOM is ready:
-	 *
-	 * $(function() {
-	 *
-	 * });
-	 *
-	 * When the window is loaded:
-	 *
-	 * $( window ).load(function() {
-	 *
-	 * });
-	 *
-	 * ...and/or other possibilities.
-	 *
-	 * Ideally, it is not considered best practise to attach more than a
-	 * single DOM-ready or window-load handler for a particular page.
-	 * Although scripts in the WordPress core, Plugins and Themes may be
-	 * practising this, we should strive to set a better example in our own work.
-	 */
-
 	  // jQuery document ready
 	  $(document).ready(function () {
-		// let now = moment();
-		// let today = now.format("YYYY-MM-DD");
-		// console.log("today: " + today);
-		
-		// $("input[placeholder]").each( function () {
-		// 	console.log("hello");
-		// 	$(this).val( $(this).attr("placeholder") );
-		// });
-	//   alert("hello");
-	//   $(".wpgmza-save-feature-container").append('hello');
-	
-	//   });
+		$('body').on('click', '.wpgmza_approve_btn', function() {
+			let img_link = $(this).parents('tr').find('img');
+			let img_link_src = img_link[1].src;
+			let marker_id = $(this).attr('id');
+
+		   $.ajax({
+			url: approve.ajaxurl,
+			type: 'post',
+			data: {
+				action: 'ttb_vgb_insert_pic',
+				img_src: img_link_src,
+				marker_id: marker_id
+			},
+			success: function() {
+				
+			}
+		});
+
+		  });
+	  });
 
 })( jQuery );
