@@ -213,14 +213,14 @@ body {
           padding-top: 4px !important;
           border: none !important;
           &:focus{
-            outline: none;
-            border: none;
+            outline: none !important;
+            border: none !important;
           }
           &:hover {
             border: none !important;
             &:focus{
-              outline: none;
-              border: none;
+              outline: none !important;
+              border: none !important;
             }
           }
         }

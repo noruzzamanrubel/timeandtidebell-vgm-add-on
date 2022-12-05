@@ -160,13 +160,13 @@ body .wpgmaps_user_form {
         padding-top: 4px !important;
         border: none !important; }
         #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field#ttb_upload_image input:focus {
-          outline: none;
-          border: none; }
+          outline: none !important;
+          border: none !important; }
         #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field#ttb_upload_image input:hover {
           border: none !important; }
           #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field#ttb_upload_image input:hover:focus {
-            outline: none;
-            border: none; }
+            outline: none !important;
+            border: none !important; }
 
 #ttb_marker_description-error {
   font-size: 12px !important;
