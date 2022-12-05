@@ -62,7 +62,7 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
             wp_send_json_error( [
                 'message' => __( 'your submission did not received. Please fillup all field and resubmit again.', 'timeandtidebell-vgm-add-on' ),
 
-            ] );
+            ] );        
         }
 
 
@@ -166,9 +166,6 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
                 '%s',
             ]
         );
-
-        var_dump($inserted);
-        die();
 
         //success message
         if ( $inserted ) {
