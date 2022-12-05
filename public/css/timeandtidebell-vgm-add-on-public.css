@@ -73,13 +73,19 @@ body .wpgmaps_user_form {
           body .wpgmaps_user_form table.wpgmza_table tbody tr.wpgmza-address #ttb_map_icon img {
             width: 100%;
             height: auto; }
+          @media only screen and (max-width: 340px) {
+            body .wpgmaps_user_form table.wpgmza_table tbody tr.wpgmza-address #ttb_map_icon {
+              top: 50px; } }
         body .wpgmaps_user_form table.wpgmza_table tbody tr.wpgmza-address .ttb-required-label {
           position: absolute;
           top: -3px;
-          left: calc(20% + 30px);
+          left: 238px;
           display: block;
           color: #ff0000;
           font-weight: 400; }
+          @media only screen and (max-width: 340px) {
+            body .wpgmaps_user_form table.wpgmza_table tbody tr.wpgmza-address .ttb-required-label {
+              left: 175px; } }
 
 #ttb_marker_form_wrapper {
   background-color: rgba(96, 110, 121, 0.4);
@@ -151,13 +157,20 @@ body .wpgmaps_user_form {
         margin: 0 !important; }
       #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field#ttb_upload_image input {
         padding-left: 0 !important;
-        padding-top: 4px !important; }
+        padding-top: 4px !important;
+        border: none !important; }
         #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field#ttb_upload_image input:focus {
           outline: none;
           border: none; }
-        #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field#ttb_upload_image input:hover:focus {
-          outline: none;
-          border: none; }
+        #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field#ttb_upload_image input:hover {
+          border: none !important; }
+          #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field#ttb_upload_image input:hover:focus {
+            outline: none;
+            border: none; }
+
+#ttb_marker_description-error {
+  font-size: 12px !important;
+  font-weight: 400 !important; }
 
 #ttb_marker_date {
   background-color: #e5e5e5 !important; }

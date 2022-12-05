@@ -20,6 +20,7 @@
         },
         ttb_marker_description: {
           required: true,
+          maxlength: 100
         },
       },
       messages: {
@@ -31,6 +32,7 @@
         },
         ttb_marker_description: {
           required: ttb_vgm_form.ttb_marker_description,
+          maxlength: ttb_vgm_form.maxlength
         },
       },
     });
@@ -115,7 +117,7 @@
             $("#ttb_marker_form_wrapper form").trigger("reset");
             $('.ttb_loader').remove();
           } else if (data.success === false) {
-            $("#result_message").html("<div>" + data.data.message + "</div>");
+            $("#result_message").html("<div>"+data.data.message+"</div>");
             $('.ttb_loader').remove();
           }
         },

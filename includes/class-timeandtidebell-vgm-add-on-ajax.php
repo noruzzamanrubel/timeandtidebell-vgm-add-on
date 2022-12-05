@@ -52,14 +52,17 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
         $ttb_marker_description = isset( $_POST['ttb_marker_description'] ) ? sanitize_text_field( $_POST['ttb_marker_description'] ) : '';
 
         if ( empty( $ttb_marker_date ) || empty( $wpgmza_ugm_add_address ) || empty( $ttb_marker_type ) || empty( $ttb_marker_description ) ) {
-            $this->errors['wpgmza_ugm_add_address']   = __( 'Address is required', 'timeandtidebell-vgm-add-on' );
+            $this->errors['wpgmza_ugm_add_address']   = __( 'Address is required adsfa', 'timeandtidebell-vgm-add-on' );
             $this->errors['ttb_marker_date']          = __( 'Date is required', 'timeandtidebell-vgm-add-on' );
             $this->errors['ttb_marker_type']          = __( 'Type required', 'timeandtidebell-vgm-add-on' );
             $this->errors['ttb_marker_description']   = __( 'Description is required', 'timeandtidebell-vgm-add-on' );
         }
 
         if ( ! empty( $this->errors ) ) {
-            wp_send_json_error( $this->errors );
+            wp_send_json_error( [
+                'message' => __( 'your submission did not received. Please fillup all field and resubmit again.', 'timeandtidebell-vgm-add-on' ),
+
+            ] );
         }
 
 
@@ -164,15 +167,14 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
             ]
         );
 
+        var_dump($inserted);
+        die();
+
         //success message
         if ( $inserted ) {
             wp_send_json_success( [
                 'message' => __( 'Thank you, your submission is received and will be added to the map once approved by an admin.', 'timeandtidebell-vgm-add-on' ),
             ], 200 );
-        }else{
-            wp_send_json_success( [
-                'message' => __( 'your submission did not received. Please fillup all field and resubmit again.', 'timeandtidebell-vgm-add-on' ),
-            ], 200 ); 
         }
 
         return $wpdb->insert_id;

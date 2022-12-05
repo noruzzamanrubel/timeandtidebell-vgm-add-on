@@ -98,14 +98,20 @@ body {
                   width: 100%;
                   height: auto;
                 }
+                @media only screen and (max-width: 340px) { 
+                  top: 50px;
+                }
               }
               .ttb-required-label {
                 position: absolute;
                 top: -3px;
-                left: calc(20% + 30px);
+                left: 238px;
                 display: block;
                 color: #ff0000;
                 font-weight: 400;
+                @media only screen and (max-width: 340px) { 
+                  left: 175px;
+                }
               }
             }
           }
@@ -205,12 +211,13 @@ body {
         input {
           padding-left: 0 !important;
           padding-top: 4px !important;
-
+          border: none !important;
           &:focus{
             outline: none;
             border: none;
           }
           &:hover {
+            border: none !important;
             &:focus{
               outline: none;
               border: none;
@@ -220,6 +227,11 @@ body {
       }
     }
   }
+}
+
+#ttb_marker_description-error {
+  font-size: 12px !important;
+  font-weight: 400 !important;
 }
 
 #ttb_marker_date{
