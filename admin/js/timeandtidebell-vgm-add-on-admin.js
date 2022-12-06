@@ -8,19 +8,20 @@
 			let img_link_src = img_link[1].src;
 			let marker_id = $(this).attr('id');
 
-		   $.ajax({
-			url: approve.ajaxurl,
-			type: 'post',
-			data: {
-				action: 'ttb_vgb_insert_pic',
-				img_src: img_link_src,
-				marker_id: marker_id
-			},
-			success: function() {
-				
-			}
-		});
-
+			setTimeout(function(){
+				$.ajax({
+					url: approve.ajaxurl,
+					type: 'post',
+					data: {
+						action: 'ttb_vgb_insert_pic',
+						img_src: img_link_src,
+						marker_id: marker_id
+					},
+					success: function() {
+						location.reload();
+					}
+				});
+			 }, 4000);
 		  });
 	  });
 

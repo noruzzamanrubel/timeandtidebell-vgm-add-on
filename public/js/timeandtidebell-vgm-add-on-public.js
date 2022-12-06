@@ -103,14 +103,12 @@
       fd.append('type_id', type_id);
       fd.append('season_id', season_id);
 
-
       $.ajax({
         type: 'POST',
         url: ttb_vgm_form.ajaxurl,
         data: fd,
         contentType: false,
         processData: false,
-
         success: function (data) {
           if (data.success === true) {
             $("#result_message").html("<div>" + data.data.message + "</div>");
