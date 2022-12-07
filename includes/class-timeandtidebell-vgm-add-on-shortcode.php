@@ -32,7 +32,7 @@ class timeandtidebell_Vgm_Add_Shortcode {
                     </select>
                 </div>
                 <div class="ttb_marker_form_field">
-                    <label for="ttb_marker_description">Marker Description<span class="ttb-required-label"> *</label>
+                    <label for="ttb_marker_description">Marker Description</label>
                     <textarea name="ttb_marker_description" id="ttb_marker_description" placeholder="Enter Description" maxlength="100"></textarea>
                 </div>
                 <div class="ttb_marker_form_field" id="ttb_upload_image">

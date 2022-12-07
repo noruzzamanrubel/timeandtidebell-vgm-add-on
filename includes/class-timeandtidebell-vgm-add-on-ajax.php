@@ -1,5 +1,4 @@
 <?php
-require_once plugin_dir_path( __FILE__ ) . '../libs/function.php';
 class Timeandtidebell_Vgm_Add_On_Ajax {
 
     public $errors = [];
@@ -51,11 +50,10 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
         $ttb_marker_type        = isset( $_POST['ttb_marker_type'] ) ? sanitize_text_field( $_POST['ttb_marker_type'] ) : '';
         $ttb_marker_description = isset( $_POST['ttb_marker_description'] ) ? sanitize_text_field( $_POST['ttb_marker_description'] ) : '';
 
-        if ( empty( $ttb_marker_date ) || empty( $wpgmza_ugm_add_address ) || empty( $ttb_marker_type ) || empty( $ttb_marker_description ) ) {
+        if ( empty( $ttb_marker_date ) || empty( $wpgmza_ugm_add_address ) || empty( $ttb_marker_type ) ) {
             $this->errors['wpgmza_ugm_add_address']   = __( 'Address is required adsfa', 'timeandtidebell-vgm-add-on' );
             $this->errors['ttb_marker_date']          = __( 'Date is required', 'timeandtidebell-vgm-add-on' );
             $this->errors['ttb_marker_type']          = __( 'Type required', 'timeandtidebell-vgm-add-on' );
-            $this->errors['ttb_marker_description']   = __( 'Description is required', 'timeandtidebell-vgm-add-on' );
         }
 
         if ( ! empty( $this->errors ) ) {
@@ -70,14 +68,19 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
 
         $wpgmza_lat_lng = explode(", ", $wpgmza_ugm_add_address);
 
+
+        
         //Custom Marker icon Url
+        $meta = get_option( 'ttb_location_icon' );
         $custom_icon_url        = "";
-        $flora_icon_url         = get_site_url().'/wp-content/uploads/wp-google-maps/icons/633ead38835c84.13417171.png';
-        $invertebrates_icon_url = get_site_url().'/wp-content/uploads/wp-google-maps/icons/633ead292ba933.27932952.png';
-        $crustaceans_icon_url   = get_site_url().'/wp-content/uploads/wp-google-maps/icons/633c7260d51318.15742895.png';
-        $fish_icon_url          = get_site_url().'/wp-content/uploads/wp-google-maps/icons/633eadb182d8a0.04915283.png';
-        $mammals_icon_url       = get_site_url().'/wp-content/uploads/wp-google-maps/icons/633ead57cf8296.38666914.png';
-        $seashells_icon_url     = get_site_url().'/wp-content/uploads/wp-google-maps/icons/633ead292ba933.27932952.png';
+        if($meta !== ""){
+            $flora_icon_url         = $meta['flora_icon'];
+            $invertebrates_icon_url = $meta['invertebrates_icon'];
+            $crustaceans_icon_url   = $meta['crustaceans_icon'];
+            $fish_icon_url          = $meta['fish_icon'];
+            $mammals_icon_url       = $meta['mammals_icon'];
+            $seashells_icon_url     = $meta['seashells_icon'];
+        }
 
         if($ttb_marker_type == "Flora"){
             $custom_icon_url = $flora_icon_url;

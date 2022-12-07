@@ -19,7 +19,6 @@
           required: true,
         },
         ttb_marker_description: {
-          required: true,
           maxlength: 100
         },
       },
@@ -31,7 +30,6 @@
           required: ttb_vgm_form.ttb_marker_type,
         },
         ttb_marker_description: {
-          required: ttb_vgm_form.ttb_marker_description,
           maxlength: ttb_vgm_form.maxlength
         },
       },
