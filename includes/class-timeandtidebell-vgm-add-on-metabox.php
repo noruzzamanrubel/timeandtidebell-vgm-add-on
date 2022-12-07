@@ -18,62 +18,78 @@ class timeandtidebell_Vgm_Add_On_MetaBox {
 
             // Create a section
             CSF::createSection( $prefix, array(
-            'title'  => 'Types of  Location Icon',
+            'title'  => 'Upload Types of Marker Icon',
             'fields' => array(
-                // A text field
+                array (
+                    'type'         => 'heading',
+                    'title'        => 'Flora',
+                ),
                 array(
                     'id'           => 'flora_icon',
                     'type'         => 'upload',
-                    'title'        => 'Flora Icon',
                     'library'      => 'image',
                     'placeholder'  => 'http://',
-                    'button_title' => 'Add Icon',
-                    'remove_title' => 'Remove Icon',
+                    'preview' => true,
+                ),
+
+                array (
+                    'type'         => 'heading',
+                    'title'        => 'Invertebrates',
                 ),
                 array(
                     'id'           => 'invertebrates_icon',
                     'type'         => 'upload',
-                    'title'        => 'Invertebrates Icon',
                     'library'      => 'image',
                     'placeholder'  => 'http://',
-                    'button_title' => 'Add Icon',
-                    'remove_title' => 'Remove Icon',
+                    'preview' => true,
+                ),
+
+                array (
+                    'type'         => 'heading',
+                    'title'        => 'Crustaceans',
                 ),
                 array(
                     'id'           => 'crustaceans_icon',
                     'type'         => 'upload',
-                    'title'        => 'Crustaceans Icon',
                     'library'      => 'image',
                     'placeholder'  => 'http://',
-                    'button_title' => 'Add Icon',
-                    'remove_title' => 'Remove Icon',
+                    'preview' => true,
+                ),
+
+                array (
+                    'type'         => 'heading',
+                    'title'        => 'Fish',
                 ),
                 array(
                     'id'           => 'fish_icon',
                     'type'         => 'upload',
-                    'title'        => 'Fish Icon',
                     'library'      => 'image',
                     'placeholder'  => 'http://',
-                    'button_title' => 'Add Icon',
-                    'remove_title' => 'Remove Icon',
+                    'preview' => true,
+                ),
+
+                array (
+                    'type'         => 'heading',
+                    'title'        => 'Mammals',
                 ),
                 array(
                     'id'           => 'mammals_icon',
                     'type'         => 'upload',
-                    'title'        => 'Mammals Icon',
                     'library'      => 'image',
                     'placeholder'  => 'http://',
-                    'button_title' => 'Add Icon',
-                    'remove_title' => 'Remove Icon',
+                    'preview' => true,
+                ),
+
+                array (
+                    'type'         => 'heading',
+                    'title'        => 'Seashells',
                 ),
                 array(
                     'id'           => 'seashells_icon',
                     'type'         => 'upload',
-                    'title'        => 'Seashells Icon',
                     'library'      => 'image',
                     'placeholder'  => 'http://',
-                    'button_title' => 'Add Icon',
-                    'remove_title' => 'Remove Icon',
+                    'preview' => true,
                 ),
         
             )
