@@ -45,6 +45,12 @@ body {
               border: none;
               font-size: 14px;
               line-height: normal;
+              color:#000 !important;
+              border-radius: 0 !important;
+              -webkit-appearance: none !important;
+              -webkit-border-radius: 0 !important;
+              -webkit-text-fill-color:#000 !important; 
+              -webkit-opacity:1;
       
               &:focus {
                 outline: none;
@@ -73,6 +79,12 @@ body {
                   border: none;
                   font-size: 14px;
                   line-height: normal;
+                  color:#000 !important;
+                  border-radius: 0 !important;
+                  -webkit-appearance: none !important;
+                  -webkit-border-radius: 0 !important;
+                  -webkit-text-fill-color:#000 !important; 
+                  -webkit-opacity:1;
           
                   &:focus {
                     outline: none;
@@ -154,6 +166,12 @@ body {
         border: none;
         font-size: 14px;
         line-height: normal;
+        color:#000 !important;
+        border-radius: 0 !important;
+        -webkit-appearance: none !important;
+        -webkit-border-radius: 0 !important;
+        -webkit-text-fill-color:#000 !important; 
+        -webkit-opacity:1;
         &:focus {
           outline: none;
           border: none;
@@ -165,6 +183,10 @@ body {
         border: none;
         font-size: 14px;
         line-height: normal;
+        color:#000 !important;
+        -webkit-border-radius: 0 !important;
+        -webkit-text-fill-color:#000 !important; 
+        -webkit-opacity:1;
         &:focus {
           border: none;
           outline: none;
@@ -180,6 +202,10 @@ body {
         border: none;
         font-size: 14px;
         line-height: normal;
+        color:#000 !important;
+        -webkit-appearance: none !important;
+        -webkit-text-fill-color:#000 !important; 
+        -webkit-border-radius: 0 !important;
 
         &:focus {
           outline: none;
@@ -212,6 +238,10 @@ body {
           padding-left: 0 !important;
           padding-top: 4px !important;
           border: none !important;
+          color:#000 !important;
+          -webkit-appearance: none !important;
+          -webkit-text-fill-color:#000 !important;
+          -webkit-border-radius: 0 !important;
           &:focus{
             outline: none !important;
             border: none !important;
@@ -240,6 +270,8 @@ body {
 input::-webkit-input-placeholder {
   font-size: 14px !important;
   line-height: normal;
+  color: #000 !important;
+  border-radius: 0 !important;
  }
 
  #result_message {
@@ -278,3 +310,12 @@ input::-webkit-input-placeholder {
 .wpgmza_map {
   margin-bottom: 30px !important;
 }
+
+// #ttb_upload_image {
+//   input[type="file"] {
+//     -webkit-appearance: none !important;
+//     -webkit-text-fill-color:#000 !important;
+//     -webkit-border-radius: 0 !important;
+//     -moz-border-radius: 0 !important;
+//   }
+// }
