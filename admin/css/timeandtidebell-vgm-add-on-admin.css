@@ -3,20 +3,28 @@
  * included in this file.
  */
 
- .wpgmza-infowindow {
-	width: 300px;
-    height: 300px;
-}
-.wpgmza-infowindow img {
-	width: 100% !important;
-    height: 300px !important;
-    margin: 0 !important;
-    float: none !important;
+
+.wpgmza-infowindow p {
+    display: none;
 }
 
-th#wpgmza_map_list_pic {
-    display: none;
+.wpgmza_infowindow_description {
+      display: none;
 }
-#wpgmza-table-container-Marker tbody tr td:nth-child(8) {
-    display: none;
+
+.wpgmza-infowindow p[data-custom-field-name="Date"] {
+    display: block !important;
+  	padding-bottom: 15px;
+}
+
+.gm-style-iw-d {
+	overflow-y: scroll !important;
+    overflow-x: hidden !important;
+}
+
+@media screen and (max-width: 767px) {
+  .wpgmza-infowindow {
+      width: 160px !important;
+      height: 200px !important;
+  }
 }
