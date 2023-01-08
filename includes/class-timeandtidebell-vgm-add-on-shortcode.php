@@ -21,17 +21,10 @@ class timeandtidebell_Vgm_Add_Shortcode {
                     <label for="ttb_marker_date">Marker Date<span class="ttb-required-label"> *</span></label>
                     <input type="text" name="ttb_marker_date" id="ttb_marker_date" placeholder="Enter Date" value="" readonly="readonly">
                 </div>
-                <div class="ttb_marker_form_field">
+                <div class="ttb_marker_form_field" id="ttb_marker_type">
                     <label for="ttb_marker_type">Types of entry<span class="ttb-required-label"> *</label>
-                    <select name="ttb_marker_type" id="ttb_marker_type">
-                        <?php
-                            foreach($attr_type as $key => $option) {?>
-                                <option value="<?php echo strtolower($option); ?>"><?php echo $option; ?></option>
-                            <?php }
-                        ?>
-                    </select>
                 </div>
-                <div class="ttb_marker_form_field">
+                <div class="ttb_marker_form_field" id="ttb_marker_des">
                     <label for="ttb_marker_description">Marker Description</label>
                     <textarea name="ttb_marker_description" id="ttb_marker_description" placeholder="Enter Description" maxlength="100"></textarea>
                 </div>

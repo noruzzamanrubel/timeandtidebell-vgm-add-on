@@ -28,3 +28,10 @@
       height: 200px !important;
   }
 }
+
+th#wpgmza_map_list_pic {
+    display: none;
+}
+#wpgmza-table-container-Marker tbody tr td:nth-child(8) {
+    display: none;
+}

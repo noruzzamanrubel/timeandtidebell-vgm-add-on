@@ -1,5 +1,11 @@
 body .wpgmaps_user_form table.wpgmza_table tr {
   display: none !important; }
+  body .wpgmaps_user_form table.wpgmza_table tr.wpgmza-categories {
+    display: block !important; }
+    body .wpgmaps_user_form table.wpgmza_table tr.wpgmza-categories > :first-child {
+      display: none !important; }
+body .wpgmaps_user_form table.wpgmza_table td {
+  padding-right: 0 !important; }
 
 body .wpgmaps_user_form {
   background-color: rgba(96, 110, 121, 0.4);
@@ -239,5 +245,69 @@ input::-webkit-input-placeholder {
     transform: rotate(360deg); } }
 .wpgmza_map {
   margin-bottom: 30px !important; }
+
+#ttb_marker_type {
+  padding: 0 !important; }
+
+.wpgmza-categories {
+  margin: 0; }
+  .wpgmza-categories td {
+    width: 50%; }
+    @media only screen and (max-width: 767px) {
+      .wpgmza-categories td {
+        width: 40%; } }
+    .wpgmza-categories td select {
+      padding: 10px;
+      border: none;
+      font-size: 14px;
+      line-height: normal;
+      color: #000 !important;
+      -webkit-border-radius: 0 !important;
+      -webkit-text-fill-color: #000 !important;
+      -webkit-opacity: 1; }
+      .wpgmza-categories td select#wpgmza_category:focus {
+        outline: none !important;
+        border: none !important; }
+
+.wpgmza-marker-listing-category-filter {
+  display: inline-block; }
+  .wpgmza-marker-listing-category-filter span {
+    display: none !important; }
+  .wpgmza-marker-listing-category-filter select {
+    background-color: #fff;
+    border: none;
+    padding: 4px;
+    margin: 0;
+    margin-right: 4px;
+    display: inline;
+    font-size: 14px;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+    color: #585858;
+    border-radius: 3px; }
+    .wpgmza-marker-listing-category-filter select:focus {
+      outline: none !important;
+      border: none !important; }
+
+.wpgmza-filter-widgets select {
+  margin-right: 13px !important; }
+  .wpgmza-filter-widgets select:focus {
+    outline: none !important;
+    border: none !important; }
+.wpgmza-filter-widgets button {
+  background-color: #fff;
+  border: none;
+  padding: 5px;
+  margin: 0;
+  margin-right: 4px;
+  display: inline;
+  font-size: 15px;
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+  color: #585858;
+  border-radius: 3px; }
+  .wpgmza-filter-widgets button:focus {
+    outline: none !important;
+    border: none !important; }
 
 /*# sourceMappingURL=timeandtidebell-vgm-add-on-public.css.map */

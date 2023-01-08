@@ -47,13 +47,13 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
         $season_id              = isset( $_POST['season_id'] ) ? intval( $_POST['season_id'] ) : 0;
         $wpgmza_ugm_add_address = isset( $_POST['wpgmza_ugm_add_address'] ) ? sanitize_text_field( $_POST['wpgmza_ugm_add_address'] ) : '';
         $ttb_marker_date        = isset( $_POST['ttb_marker_date'] ) ? sanitize_text_field( $_POST['ttb_marker_date'] ) : '';
-        $ttb_marker_type        = isset( $_POST['ttb_marker_type'] ) ? sanitize_text_field( $_POST['ttb_marker_type'] ) : '';
+        // $ttb_marker_type        = isset( $_POST['ttb_marker_type'] ) ? sanitize_text_field( $_POST['ttb_marker_type'] ) : '';
         $ttb_marker_description = isset( $_POST['ttb_marker_description'] ) ? sanitize_text_field( $_POST['ttb_marker_description'] ) : '';
 
-        if ( empty( $ttb_marker_date ) || empty( $wpgmza_ugm_add_address ) || empty( $ttb_marker_type ) ) {
+        if ( empty( $ttb_marker_date ) || empty( $wpgmza_ugm_add_address ) ) {
             $this->errors['wpgmza_ugm_add_address']   = __( 'Address is required adsfa', 'timeandtidebell-vgm-add-on' );
             $this->errors['ttb_marker_date']          = __( 'Date is required', 'timeandtidebell-vgm-add-on' );
-            $this->errors['ttb_marker_type']          = __( 'Type required', 'timeandtidebell-vgm-add-on' );
+            // $this->errors['ttb_marker_type']          = __( 'Type required', 'timeandtidebell-vgm-add-on' );
         }
 
         if ( ! empty( $this->errors ) ) {
@@ -69,44 +69,44 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
         $wpgmza_lat_lng = explode(", ", $wpgmza_ugm_add_address);
 
         //Custom markar url
-        if(! empty(get_theme_mod('ttb_flora_icon'))){
-            $flora_icon_url = get_theme_mod('ttb_flora_icon');
-        }
+        // if(! empty(get_theme_mod('ttb_flora_icon'))){
+        //     $flora_icon_url = get_theme_mod('ttb_flora_icon');
+        // }
 
-        if(! empty(get_theme_mod('ttb_invertebrates_icon'))){
-            $invertebrates_icon_url = get_theme_mod('ttb_invertebrates_icon');
-        }
+        // if(! empty(get_theme_mod('ttb_invertebrates_icon'))){
+        //     $invertebrates_icon_url = get_theme_mod('ttb_invertebrates_icon');
+        // }
 
-        if(! empty(get_theme_mod('ttb_crustaceans_icon'))){
-            $crustaceans_icon_url = get_theme_mod('ttb_crustaceans_icon');
-        }
+        // if(! empty(get_theme_mod('ttb_crustaceans_icon'))){
+        //     $crustaceans_icon_url = get_theme_mod('ttb_crustaceans_icon');
+        // }
 
-        if(! empty(get_theme_mod('ttb_fish_icon'))){
-            $fish_icon_url = get_theme_mod('ttb_fish_icon');
-        }
+        // if(! empty(get_theme_mod('ttb_fish_icon'))){
+        //     $fish_icon_url = get_theme_mod('ttb_fish_icon');
+        // }
 
-        if(! empty(get_theme_mod('ttb_mammals_icon'))){
-            $mammals_icon_url = get_theme_mod('ttb_mammals_icon');
-        }
+        // if(! empty(get_theme_mod('ttb_mammals_icon'))){
+        //     $mammals_icon_url = get_theme_mod('ttb_mammals_icon');
+        // }
 
-        if(! empty(get_theme_mod('ttb_seashells_icon'))){
-            $seashells_icon_url = get_theme_mod('ttb_seashells_icon');
-        }
+        // if(! empty(get_theme_mod('ttb_seashells_icon'))){
+        //     $seashells_icon_url = get_theme_mod('ttb_seashells_icon');
+        // }
 
-        $custom_icon_url        = "";
-        if($ttb_marker_type == "Flora"){
-            $custom_icon_url = $flora_icon_url;
-        }elseif($ttb_marker_type == "Invertebrates"){
-            $custom_icon_url = $invertebrates_icon_url;
-        }elseif($ttb_marker_type == "Crustaceans"){
-            $custom_icon_url = $crustaceans_icon_url;
-        }elseif($ttb_marker_type == "Fish"){
-            $custom_icon_url = $fish_icon_url;
-        }elseif($ttb_marker_type == "Mammals"){
-            $custom_icon_url = $mammals_icon_url;
-        }elseif($ttb_marker_type == "Seashells"){
-            $custom_icon_url = $seashells_icon_url;
-        }
+        // $custom_icon_url        = "";
+        // if($ttb_marker_type == "Flora"){
+        //     $custom_icon_url = $flora_icon_url;
+        // }elseif($ttb_marker_type == "Invertebrates"){
+        //     $custom_icon_url = $invertebrates_icon_url;
+        // }elseif($ttb_marker_type == "Crustaceans"){
+        //     $custom_icon_url = $crustaceans_icon_url;
+        // }elseif($ttb_marker_type == "Fish"){
+        //     $custom_icon_url = $fish_icon_url;
+        // }elseif($ttb_marker_type == "Mammals"){
+        //     $custom_icon_url = $mammals_icon_url;
+        // }elseif($ttb_marker_type == "Seashells"){
+        //     $custom_icon_url = $seashells_icon_url;
+        // }
 
         //insert data
         $inserted = $wpdb->insert(
@@ -118,7 +118,7 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
                 'lng'         => $wpgmza_lat_lng[1],
                 'description' => $ttb_marker_description,
                 'approved'    => 0,
-                'icon'        => $custom_icon_url,
+                'category'    => $type_id,
                 'pic'         => $store_img_url,
             ],
             [
@@ -150,17 +150,31 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
         );
 
         //Insert Type of entry
+        // $wpdb->insert(
+        //     "{$wpdb->prefix}wpgmza_markers_has_custom_fields",
+        //     [
+        //         'object_id' => $marker_id,
+        //         'field_id'  => $type_id,
+        //         'value'     => $ttb_marker_type,
+        //     ],
+        //     [
+        //         '%d',
+        //         '%d',
+        //         '%s',
+        //     ]
+        // );
+
+
+        //Insert marker category
         $wpdb->insert(
-            "{$wpdb->prefix}wpgmza_markers_has_custom_fields",
+            "{$wpdb->prefix}wpgmza_markers_has_categories",
             [
-                'object_id' => $marker_id,
-                'field_id'  => $type_id,
-                'value'     => $ttb_marker_type,
+                'marker_id' => $marker_id,
+                'category_id'  => $type_id,
             ],
             [
                 '%d',
                 '%d',
-                '%s',
             ]
         );
 

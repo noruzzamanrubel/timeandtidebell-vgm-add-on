@@ -40,6 +40,7 @@
 
     //html dom ordering
     $("#ttb_marker_form_date_field").insertBefore(".wpgmza-address");
+    $("#ttb_marker_type").insertBefore(".wpgmza-categories");
 
     //insert custom field id
     $('[data-custom-field-name="Date"]').parent().parent().attr( 'id', 'data_custom_field_date' );
@@ -47,7 +48,6 @@
     $('[data-custom-field-name="Season"]').parent().parent().attr( 'id', 'data_custom_field_season' );
 
     var date_id = $('#data_custom_field_date').attr("data-custom-field-id");
-    var type_id = $('#data_custom_field_type').attr("data-custom-field-id");
     var season_id = $('#data_custom_field_season').attr("data-custom-field-id");
 
   //insert lat and lng into the form browser
@@ -73,51 +73,82 @@
       });
     });
 
-    // Submit date by ajax
+
+    //add category
+    // let data = [];
+    // $('.wpgmza-categories .wpgmza_cat_checkbox_holder ul li').each(function(){
+    //   data.push({id: $(this).find('input').val(), name: $(this).text()});
+    // });
+
+    // $( '#ttb_marker_des' ).prepend(`<div class="ttb_marker_form_field">
+    // <label for="ttb_marker_type">Types of entry<span class="ttb-required-label"> *</label>
+    // <select name="ttb_marker_type" id="ttb_marker_type">${data.length > 0 && data.map(el =>  
+    //   `<option value="${el.id}">${el.name}</option>`)}
+    // </select></div>`);
+
+    $('#wpgmza_category').on('change', function() {
+      type_id = ( this.value );
+    });
+
+    //remove First option
+    $("#wpgmza_category option:first").remove();
+    $("#wpgmza_filter_select option:first").text('Types of entry');
+
+    var type_id = $( "#wpgmza_category option:selected" ).val();
+
+    // Submit marker by ajax
     $("#ttb_marker_form_wrapper form").on("submit", function (e) {
       e.preventDefault();
 
-      $('.ttb_marker_form').append('<div class="ttb_loader"><span class="loader"></span></div>');
-      
       var wpgmza_ugm_add_address = $('.wpgmaps_user_form table').find('input[name="wpgmza_ugm_add_address"]').val();
       var ttb_marker_date = $('.wpgmaps_user_form table').find('input[name="ttb_marker_date"]').val();
-      var ttb_marker_type = $('#ttb_marker_type').find(":selected").text();
+      // var ttb_marker_type = $('#ttb_marker_type').find(":selected").text();
       var ttb_marker_description = $(this).find('textarea[name="ttb_marker_description"]').val();
 
       var fd = new FormData();
       var file = jQuery(document).find('#ttb_file');
+
       var individual_file = file[0].files[0];
 
-      fd.append("file", individual_file);
-      fd.append('action', 'ttb_vgm_form_submit');
-      fd.append('nonce', ttb_vgm_form.nonce);
+      const  fileType = individual_file['type'];
+      const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+      
+      if (!validImageTypes.includes(fileType)) {
+          alert('This file type not allowed.');
+      } else {
+        $('.ttb_marker_form').append('<div class="ttb_loader"><span class="loader"></span></div>');
+        fd.append("file", individual_file);
+        fd.append('action', 'ttb_vgm_form_submit');
+        fd.append('nonce', ttb_vgm_form.nonce);
 
-      fd.append('wpgmza_ugm_add_address', wpgmza_ugm_add_address);
-      fd.append('ttb_marker_date', ttb_marker_date);
-      fd.append('ttb_marker_type', ttb_marker_type);
-      fd.append('ttb_marker_description', ttb_marker_description);
-      fd.append('map_id', map_id);
-      fd.append('date_id', date_id);
-      fd.append('type_id', type_id);
-      fd.append('season_id', season_id);
+        fd.append('wpgmza_ugm_add_address', wpgmza_ugm_add_address);
+        fd.append('ttb_marker_date', ttb_marker_date);
+        // fd.append('ttb_marker_type', ttb_marker_type);
+        fd.append('ttb_marker_description', ttb_marker_description);
+        fd.append('map_id', map_id);
+        fd.append('date_id', date_id);
+        fd.append('type_id', type_id);
+        fd.append('season_id', season_id);
 
-      $.ajax({
-        type: 'POST',
-        url: ttb_vgm_form.ajaxurl,
-        data: fd,
-        contentType: false,
-        processData: false,
-        success: function (data) {
-          if (data.success === true) {
-            $("#result_message").html("<div>" + data.data.message + "</div>");
-            $("#ttb_marker_form_wrapper form").trigger("reset");
-            $('.ttb_loader').remove();
-          } else if (data.success === false) {
-            $("#result_message").html("<div>"+data.data.message+"</div>");
-            $('.ttb_loader').remove();
-          }
-        },
-      });
+        $.ajax({
+          type: 'POST',
+          url: ttb_vgm_form.ajaxurl,
+          data: fd,
+          contentType: false,
+          processData: false,
+          success: function (data) {
+            if (data.success === true) {
+              $("#result_message").html("<div>" + data.data.message + "</div>");
+              $("#ttb_marker_form_wrapper form").trigger("reset");
+              $('#wpgmza_category').prop('selectedIndex',0);
+              $('.ttb_loader').remove();
+            } else if (data.success === false) {
+              $("#result_message").html("<div>"+data.data.message+"</div>");
+              $('.ttb_loader').remove();
+            }
+          },
+        });
+      }
     });
   });
 })(jQuery);
