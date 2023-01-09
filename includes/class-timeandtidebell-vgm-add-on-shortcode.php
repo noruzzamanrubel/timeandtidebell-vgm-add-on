@@ -6,13 +6,7 @@ class timeandtidebell_Vgm_Add_Shortcode {
         add_shortcode( 'add_marker_form', [$this, 'timeandtidebell_custom_marker_form'] );
     }
 
-    public function timeandtidebell_custom_marker_form($atts){
-        $atts = shortcode_atts(array(
-            "type" => "Flora, Invertebrates, Crustaceans, Fish, Mammals, Seashells"
-        ), $atts);
-
-        $attr_type = explode(",", $atts['type']);
-
+    public function timeandtidebell_custom_marker_form(){
         ob_start();
         ?>
         <div id="ttb_marker_form_wrapper">
