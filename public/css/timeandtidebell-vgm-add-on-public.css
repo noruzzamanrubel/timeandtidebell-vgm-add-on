@@ -27,7 +27,8 @@ body .wpgmaps_user_form {
           font-size: 16px;
           line-height: 1.3;
           color: #fff;
-          font-weight: 700; }
+          font-weight: 700;
+          text-transform: capitalize; }
           body .wpgmaps_user_form table.wpgmza_table tbody .ttb_marker_form_field label .ttb-required-label {
             color: #ff0000;
             font-weight: 400; }
@@ -50,8 +51,9 @@ body .wpgmaps_user_form {
         display: flex !important;
         width: 100%;
         margin: 0;
-        padding-bottom: 10px;
         position: relative; }
+        body .wpgmaps_user_form table.wpgmza_table tbody tr.wpgmza-address > :first-child {
+          display: none !important; }
         body .wpgmaps_user_form table.wpgmza_table tbody tr.wpgmza-address td {
           font-size: 16px;
           padding: 0 !important;
@@ -76,13 +78,10 @@ body .wpgmaps_user_form {
               outline: none;
               border: none; }
           body .wpgmaps_user_form table.wpgmza_table tbody tr.wpgmza-address td p {
-            font-size: 12px;
-            line-height: normal;
-            margin: 5px 0 0;
-            font-weight: 400; }
+            display: none; }
         body .wpgmaps_user_form table.wpgmza_table tbody tr.wpgmza-address #ttb_map_icon {
           position: absolute;
-          top: 33px;
+          top: 8px;
           left: 5px;
           width: 20px;
           height: 20px;
@@ -91,9 +90,6 @@ body .wpgmaps_user_form {
           body .wpgmaps_user_form table.wpgmza_table tbody tr.wpgmza-address #ttb_map_icon img {
             width: 100%;
             height: auto; }
-          @media only screen and (max-width: 340px) {
-            body .wpgmaps_user_form table.wpgmza_table tbody tr.wpgmza-address #ttb_map_icon {
-              top: 50px; } }
         body .wpgmaps_user_form table.wpgmza_table tbody tr.wpgmza-address .ttb-required-label {
           position: absolute;
           top: -3px;
@@ -109,13 +105,14 @@ body .wpgmaps_user_form {
   background-color: rgba(96, 110, 121, 0.4);
   padding: 0px 20px 20px 20px;
   border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px; }
+  border-bottom-right-radius: 30px;
+  transition: ease-in-out 2s; }
   #ttb_marker_form_wrapper .ttb_marker_form {
     position: relative; }
     #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field {
       padding-bottom: 20px; }
       #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field:nth-child(2) {
-        padding-bottom: 10px; }
+        padding-bottom: 15px; }
       #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field label {
         display: block;
         font-size: 16px;
@@ -123,7 +120,8 @@ body .wpgmaps_user_form {
         color: #fff;
         font-weight: 700;
         padding: 0;
-        margin-bottom: 4px; }
+        margin-bottom: 4px;
+        text-transform: capitalize; }
         #ttb_marker_form_wrapper .ttb_marker_form .ttb_marker_form_field label .ttb-required-label {
           color: #ff0000;
           font-weight: 400; }
@@ -309,5 +307,21 @@ input::-webkit-input-placeholder {
   .wpgmza-filter-widgets button:focus {
     outline: none !important;
     border: none !important; }
+
+#ttb_marker_address {
+  padding: 0 !important; }
+
+#ttb_marker_address_info {
+  line-height: normal;
+  padding-bottom: 15px !important; }
+  #ttb_marker_address_info span {
+    font-size: 12px;
+    line-height: normal;
+    margin: 5px 0 0;
+    font-weight: 400;
+    color: #fff; }
+
+#ttb_marker_des {
+  padding-bottom: 15px !important; }
 
 /*# sourceMappingURL=timeandtidebell-vgm-add-on-public.css.map */

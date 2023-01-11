@@ -106,6 +106,7 @@ class Timeandtidebell_Vgm_Add_On_Public {
             'action'      				=> 'ttb_vgm_form_submit',
             'nonce'       				=> wp_create_nonce( 'ttb_vgm_form_nonce' ),
 			'ttb_marker_date'       	=> __( 'Please enter date', 'timeandtidebell-vgm-add-on' ),
+			'wpgmza_ugm_add_address'    => __( 'Please enter address', 'timeandtidebell-vgm-add-on' ),
             'ttb_marker_type'       	=> __( 'Please select type', 'timeandtidebell-vgm-add-on' ),
             'maxlength'    				=> __( 'Please enter description. Max character 100 ', 'timeandtidebell-vgm-add-on' ),
 			'icon' 						=> $location_meta

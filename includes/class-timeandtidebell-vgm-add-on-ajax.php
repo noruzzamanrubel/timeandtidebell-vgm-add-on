@@ -49,19 +49,12 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
         $ttb_marker_date        = isset( $_POST['ttb_marker_date'] ) ? sanitize_text_field( $_POST['ttb_marker_date'] ) : '';
         $ttb_marker_description = isset( $_POST['ttb_marker_description'] ) ? sanitize_text_field( $_POST['ttb_marker_description'] ) : '';
 
-        if ( empty( $ttb_marker_date ) || empty( $wpgmza_ugm_add_address ) ) {
-            $this->errors['wpgmza_ugm_add_address']   = __( 'Address is required adsfa', 'timeandtidebell-vgm-add-on' );
-            $this->errors['ttb_marker_date']          = __( 'Date is required', 'timeandtidebell-vgm-add-on' );
-        }
-
-        if ( ! empty( $this->errors ) ) {
+        if ( empty( $wpgmza_ugm_add_address ) ) {
             wp_send_json_error( [
-                'message' => __( 'your submission did not received. Please fillup all field and resubmit again.', 'timeandtidebell-vgm-add-on' ),
-
+                'status' => 'fail',
             ] );        
         }
-
-
+        
         global $wpdb;
 
         $wpgmza_lat_lng = explode(", ", $wpgmza_ugm_add_address);
@@ -107,7 +100,6 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
             ]
         );
 
-
         //Insert marker category
         $wpdb->insert(
             "{$wpdb->prefix}wpgmza_markers_has_categories",
@@ -142,7 +134,7 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
         //success message
         if ( $inserted ) {
             wp_send_json_success( [
-                'message' => __( 'Thank you, your submission is received and will be added to the map once approved by an admin.', 'timeandtidebell-vgm-add-on' ),
+                'status' => 'success',
             ], 200 );
         }
 
@@ -178,4 +170,5 @@ class Timeandtidebell_Vgm_Add_On_Ajax {
         $wpdb->query($wpdb->prepare("UPDATE $marker_table SET pic='$img_src' WHERE id=$marker_id"));
 
     }
+
 }
