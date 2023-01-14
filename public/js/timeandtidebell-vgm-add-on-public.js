@@ -6,7 +6,7 @@
 
     //Get current date
     let now = moment();
-    let today = now.format("YYYY-MM-DD");
+    let today = now.format("DD-MM-YYYY");
     $("#ttb_marker_date").attr("value", today);
 
     // Form Validation
